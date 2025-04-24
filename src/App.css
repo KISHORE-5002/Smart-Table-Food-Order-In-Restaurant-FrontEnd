@@ -1569,5 +1569,9 @@ margin-bottom:40px;
 
 }
 
-
+.team-grid {
+  display: flex;
+  gap: 100px; /* Space between members */
+  padding-left:100px;
+}
 

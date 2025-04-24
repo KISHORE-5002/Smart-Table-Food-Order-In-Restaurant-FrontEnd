@@ -17,16 +17,27 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a server
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
-  };
+                        try {
+                           const response = await fetch('http://localhost:8080/api/contact', {
+                             method: 'POST',
+                             headers: {
+                               'Content-Type': 'application/json',
+                             },
+                             body: JSON.stringify(formData),
+                           });
+
+                           if (!response.ok) throw new Error('Failed to send message');
+
+                           alert('Message sent successfully!');
+                           setFormData({ name: '', email: '', message: '' });
+                         } catch (error) {
+                           console.error('Error:', error);
+                           alert('Failed to send message. Please try again later.');
+                         }
+
+                        };
 
   return (
     <div className="contact-page">

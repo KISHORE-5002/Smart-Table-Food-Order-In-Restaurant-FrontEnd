@@ -23,19 +23,21 @@ const About = () => {
             process faster, more convenient, and more enjoyable for our customers.
           </p>
 
-          <h2>Our Team</h2>
-          <div className="team-grid">
-            <div className="team-member">
-              <img src="https://via.placeholder.com/200x200?text=Chef" alt="Head Chef" />
-              <h3>Sachin Rao</h3>
-              <p>Head Chef</p>
-            </div>
-            <div className="team-member">
-              <img src="https://via.placeholder.com/200x200?text=Manager" alt="Restaurant Manager" />
-              <h3>Srinivasan</h3>
-              <p>Restaurant Manager</p>
-            </div>
-          </div>
+
+         <h2>Our Team</h2>
+         <div className="team-grid">
+           <div className="team-member">
+             <img src="Headchif.png" alt="Head Chef" height="150px" width="150px" />
+             <h3>Sachin Rao</h3>
+             <p>Head Chef</p>
+           </div>
+
+           <div className="team-member">
+             <img src="Manager.jpg" alt="Restaurant Manager" height="150px" width="150px" />
+             <h3>Srinivasan</h3>
+             <p>Restaurant Manager</p>
+           </div>
+         </div>
         </div>
       </section>
     </div>
