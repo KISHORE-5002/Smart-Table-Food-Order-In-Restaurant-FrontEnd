@@ -14,7 +14,7 @@ const Menu = () => {
       description: 'Classic pizza with tomato sauce, mozzarella, and basil',
       price: 12.99,
       category: 'Pizza',
-      image: 'https://via.placeholder.com/300x200?text=Margherita+Pizza'
+      image: 'Margherita Pizza.jpeg'
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const Menu = () => {
       description: 'Pasta with eggs, cheese, pancetta, and black pepper',
       price: 14.99,
       category: 'Pasta',
-      image: 'https://via.placeholder.com/300x200?text=Spaghetti+Carbonara'
+      image: 'Spaghetti Carbonara.jpeg'
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const Menu = () => {
       description: 'Romaine lettuce, croutons, parmesan, and Caesar dressing',
       price: 9.99,
       category: 'Salads',
-      image: 'https://via.placeholder.com/300x200?text=Caesar+Salad'
+      image: 'Caesar Salad.jpeg'
     },
     {
       id: 4,
@@ -38,7 +38,7 @@ const Menu = () => {
       description: 'Pizza with tomato sauce, mozzarella, and pepperoni',
       price: 14.99,
       category: 'Pizza',
-      image: 'https://via.placeholder.com/300x200?text=Pepperoni+Pizza'
+      image: 'Pepperoni Pizza.jpeg'
     },
     {
       id: 5,
@@ -46,7 +46,7 @@ const Menu = () => {
       description: 'Coffee-flavored Italian dessert with ladyfingers and mascarpone',
       price: 7.99,
       category: 'Desserts',
-      image: 'https://via.placeholder.com/300x200?text=Tiramisu'
+      image: 'Tiramisu.jpeg'
     },
     {
       id: 6,
@@ -54,7 +54,7 @@ const Menu = () => {
       description: 'Penne pasta in a spicy tomato sauce',
       price: 13.99,
       category: 'Pasta',
-      image: 'https://via.placeholder.com/300x200?text=Penne+Arrabiata'
+      image: 'Penne Arrabiata.jpeg'
     }
   ];
 

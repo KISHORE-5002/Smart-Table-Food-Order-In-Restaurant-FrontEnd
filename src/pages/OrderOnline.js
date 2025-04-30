@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import MenuCard from '../components/MenuCard';
+import DeliveryInformation from '../components/DeliveryInformation';
 import '../App.css';
 
 const OrderOnline = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
-  const [checkoutStep, setCheckoutStep] = useState('menu'); // 'menu', 'details', 'confirmation'
+  const [checkoutStep, setCheckoutStep] = useState('menu');
   const [orderDetails, setOrderDetails] = useState({
     name: '',
     phone: '',
@@ -21,48 +22,48 @@ const OrderOnline = () => {
       description: 'Classic pizza with tomato sauce, mozzarella, and basil',
       price: 12.99,
       category: 'Pizza',
-      image: 'https://via.placeholder.com/300x200?text=Margherita+Pizza'
+      image: 'Margherita Pizza.jpeg'
     },
     {
-      id: 2,
-      name: 'Spaghetti Carbonara',
-      description: 'Pasta with eggs, cheese, pancetta, and black pepper',
-      price: 14.99,
-      category: 'Pasta',
-      image: 'https://via.placeholder.com/300x200?text=Spaghetti+Carbonara'
-    },
-    {
-      id: 3,
-      name: 'Caesar Salad',
-      description: 'Romaine lettuce, croutons, parmesan, and Caesar dressing',
-      price: 9.99,
-      category: 'Salads',
-      image: 'https://via.placeholder.com/300x200?text=Caesar+Salad'
-    },
-    {
-      id: 4,
-      name: 'Pepperoni Pizza',
-      description: 'Pizza with tomato sauce, mozzarella, and pepperoni',
-      price: 14.99,
-      category: 'Pizza',
-      image: 'https://via.placeholder.com/300x200?text=Pepperoni+Pizza'
-    },
-    {
-      id: 5,
-      name: 'Tiramisu',
-      description: 'Coffee-flavored Italian dessert with ladyfingers and mascarpone',
-      price: 7.99,
-      category: 'Desserts',
-      image: 'https://via.placeholder.com/300x200?text=Tiramisu'
-    },
-    {
-      id: 6,
-      name: 'Penne Arrabiata',
-      description: 'Penne pasta in a spicy tomato sauce',
-      price: 13.99,
-      category: 'Pasta',
-      image: 'https://via.placeholder.com/300x200?text=Penne+Arrabiata'
-    }
+          id: 2,
+          name: 'Spaghetti Carbonara',
+          description: 'Pasta with eggs, cheese, pancetta, and black pepper',
+          price: 14.99,
+          category: 'Pasta',
+          image: 'Spaghetti Carbonara.jpeg'
+        },
+        {
+          id: 3,
+          name: 'Caesar Salad',
+          description: 'Romaine lettuce, croutons, parmesan, and Caesar dressing',
+          price: 9.99,
+          category: 'Salads',
+          image: 'Caesar Salad.jpeg'
+        },
+        {
+          id: 4,
+          name: 'Pepperoni Pizza',
+          description: 'Pizza with tomato sauce, mozzarella, and pepperoni',
+          price: 14.99,
+          category: 'Pizza',
+          image: 'Pepperoni Pizza.jpeg'
+        },
+        {
+          id: 5,
+          name: 'Tiramisu',
+          description: 'Coffee-flavored Italian dessert with ladyfingers and mascarpone',
+          price: 7.99,
+          category: 'Desserts',
+          image: 'Tiramisu.jpeg'
+        },
+        {
+          id: 6,
+          name: 'Penne Arrabiata',
+          description: 'Penne pasta in a spicy tomato sauce',
+          price: 13.99,
+          category: 'Pasta',
+          image: 'Penne Arrabiata.jpeg'
+        }
   ];
 
   const categories = ['All', ...new Set(menuItems.map(item => item.category))];
@@ -115,25 +116,21 @@ const OrderOnline = () => {
   };
 
   const handlePlaceOrder = () => {
-    // In a real app, you would send this data to your backend
     console.log('Order placed:', { orderDetails, cart });
     setCheckoutStep('confirmation');
     setCart([]);
   };
 
-  // Close cart when clicking on overlay
   const handleOverlayClick = () => {
     setShowCart(false);
   };
 
-  // Close cart when pressing Escape key
   React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && showCart) {
         setShowCart(false);
       }
     };
-
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [showCart]);
@@ -145,7 +142,6 @@ const OrderOnline = () => {
 
   return (
     <div className="order-online-page">
-      {/* Cart Overlay */}
       <div
         className={`cart-overlay ${showCart ? 'visible' : ''}`}
         onClick={handleOverlayClick}
@@ -263,81 +259,14 @@ const OrderOnline = () => {
       )}
 
       {checkoutStep === 'details' && (
-        <div className="checkout-form">
-          <h2>Delivery Information</h2>
-          <button className="back-button" onClick={() => setCheckoutStep('menu')}>
-            &larr; Back to Menu
-          </button>
-
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            handlePlaceOrder();
-          }}>
-            <div className="form-group">
-              <label htmlFor="name">Full Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={orderDetails.name}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Phone Number</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={orderDetails.phone}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="address">Delivery Address</label>
-              <textarea
-                id="address"
-                name="address"
-                value={orderDetails.address}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="instructions">Delivery Instructions (Optional)</label>
-              <textarea
-                id="instructions"
-                name="instructions"
-                value={orderDetails.instructions}
-                onChange={handleInputChange}
-                placeholder="Gate code, floor number, etc."
-              />
-            </div>
-
-            <div className="order-summary">
-              <h3>Your Order</h3>
-              <ul>
-                {cart.map(item => (
-                  <li key={item.id}>
-                    {item.name} × {item.quantity} - ${(item.price * item.quantity).toFixed(2)}
-                  </li>
-                ))}
-              </ul>
-              <div className="order-total">
-                <p>Total: ${grandTotal.toFixed(2)}</p>
-              </div>
-            </div>
-
-            <button type="submit" className="place-order-btn">
-              Place Order
-            </button>
-          </form>
-        </div>
+        <DeliveryInformation
+          orderDetails={orderDetails}
+          handleInputChange={handleInputChange}
+          cart={cart}
+          grandTotal={grandTotal}
+          setCheckoutStep={setCheckoutStep}
+          handlePlaceOrder={handlePlaceOrder}
+        />
       )}
 
       {checkoutStep === 'confirmation' && (
